@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./dist && minify src -d dist",
-    "start:dev": "nodemon ./src/index",
-    "start:pro": "npm run build && cross-env NODE_ENV=production node ./dist/index"
+    "start:dev": "nodemon ./src/index"
   },
   "dependencies": {
     "babel-minify": "^0.5.1",
