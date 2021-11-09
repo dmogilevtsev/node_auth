@@ -1,0 +1,8 @@
+auth/node_modules
+auth/dist
+main/node_modules
+main/client/node_modules
+.env
+main/files
+pgdata
+postgres-data

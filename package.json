@@ -1,0 +1,44 @@
+{
+  "name": "node-auth",
+  "version": "1.0.0",
+  "description": "Authentication service on node js and postgresql",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./dist && minify src -d dist",
+    "start:dev": "nodemon ./src/index",
+    "start:pro": "npm run build && cross-env NODE_ENV=production node ./dist/index"
+  },
+  "dependencies": {
+    "babel-minify": "^0.5.1",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.0",
+    "pg": "^8.7.1",
+    "rimraf": "^3.0.2",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "babel-preset-minify": "^0.5.1",
+    "nodemon": "^2.0.14"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "env": {
+      "production": {
+        "presets": [
+          "minify"
+        ]
+      }
+    }
+  }
+}
