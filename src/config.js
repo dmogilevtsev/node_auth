@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
-  port: process.env.API_PORT,
+  port: process.env.API_PORT_NODE_AUTH,
   host: process.env.API_HOST,
   client_url: process.env.CLIENT_URL,
   db: {
