@@ -37,7 +37,7 @@ const start = async () => {
 
 start()
 
-async function connectDb(retries = 5) {
+async function connectDb(retries = 8) {
   while (retries) {
     try {
       await sequelize.authenticate()
