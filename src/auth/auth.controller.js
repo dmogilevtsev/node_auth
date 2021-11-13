@@ -17,16 +17,12 @@ class AuthController {
       }
       const { email, password } = req.body
       const user = await userService.create(email, password)
-      const data = await authService.tokens(user)
+      await authService.tokens(user)
       await mailService.sendActivationLink(
         email,
         `${config.host}${config.port}/api/activate/${user.activationLink}`
       )
-      res.cookie('refreshToken', data.refreshToken, {
-        maxAge: MAX_AGE,
-        httpOnly: true,
-      })
-      return res.status(201).json(data)
+      return res.status(201).json({ message: 'Registered success. Please check your mail' })
     } catch (error) {
       next(error)
     }
@@ -77,15 +73,14 @@ class AuthController {
       if (!accessToken) {
         return next(ApiError.unauthorized())
       }
-      const { refreshToken } = req.cookies
       const isValidAccess = await tokenService.accessValidate(accessToken)
-      if (isValidAccess) {
-        return res.json({
-          accessToken,
-          refreshToken,
-          user: isValidAccess,
-        })
-      } else {
+      let refreshToken = req.cookies.refreshToken
+
+      if (!refreshToken) {
+        refreshToken = req.headers.refreshtoken
+      }
+
+      if (!isValidAccess) {
         const data = await authService.refresh(refreshToken)
         res.cookie('refreshToken', data.refreshToken, {
           maxAge: MAX_AGE,
@@ -93,6 +88,11 @@ class AuthController {
         })
         return res.status(201).json(data)
       }
+      return res.json({
+        accessToken,
+        refreshToken,
+        user: isValidAccess,
+      })
     } catch (error) {
       next(error)
     }
