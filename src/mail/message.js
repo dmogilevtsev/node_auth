@@ -36,7 +36,7 @@ module.exports = (link) => `
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td class="esd-block-button es-p10t es-p10b" align="center"><span class="es-button-border" style="border-radius: 6px;"><a href="${link}" class="es-button" style="border-left-width: 30px; border-right-width: 30px; border-radius: 6px;">CONFIRM YOUR EMAIL</a></span></td>
+                                                                                    <td class="esd-block-button es-p10t es-p10b" align="center"><span class="es-button-border" style="border-radius: 6px;"><a href="${ link }" class="es-button" style="border-left-width: 30px; border-right-width: 30px; border-radius: 6px;">CONFIRM YOUR EMAIL</a></span></td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
